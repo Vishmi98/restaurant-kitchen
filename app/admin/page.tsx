@@ -1,11 +1,13 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { BiChevronRight, BiStar } from "react-icons/bi";
+import { BiStar } from "react-icons/bi";
+import { useRouter } from "next/navigation";
 
 import { getDishes } from "@/modules/dish/dish.service";
 import { ExtendedDishCardProps } from "@/modules/dish/ui/DishCard";
 import { DishDataType } from "@/modules/dish/dish.types";
+import { getCookieUser } from "@/utils/cookie.util";
 
 
 const CategoryCard = ({ name, emoji }: { name: string, emoji: string }) => (
@@ -61,6 +63,14 @@ const FoodCardSkeleton = () => (
 export default function DashboardPage() {
     const [dishes, setDishes] = useState<DishDataType[]>([]);
     const [loading, setLoading] = useState(true);
+    const user = getCookieUser()
+    const router = useRouter();
+
+    useEffect(() => {
+        if (!user) {
+            router.push('/');
+        }
+    }, [user, router]);
 
     useEffect(() => {
         const fetchDishes = async () => {

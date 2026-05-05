@@ -97,12 +97,12 @@ export const handleVerifyUser = async ({ email, code }: VerifyDataType): Promise
     }
 };
 
-export const restPassword = async (email: string, firstName: string): Promise<ResetPasswordResponseType> => {
+export const restPassword = async (email: string, firstName: string, role: string): Promise<ResetPasswordResponseType> => {
 
     const response: ResetPasswordResponseType = await apiCall({
         url: `${URL}/auth/reset-password`,
         method: 'POST',
-        body: { email, firstName },
+        body: { email, firstName, role },
     })
 
     console.log("response:", response)

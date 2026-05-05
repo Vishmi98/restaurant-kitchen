@@ -61,7 +61,7 @@ const OrderCard = ({
                     <div className="pt-3 border-t border-gray-300">
                         <button
                             onClick={() => openStaffModal(order)}
-                            className="text-xs text-gray-500 border px-3 py-1 rounded-md flex items-center gap-1"
+                            className="text-xs text-white bg-primary shadow-lg shadow-primary/20 px-3 py-1 rounded-md flex items-center gap-1 cursor-pointer"
                         >
                             <PiChefHatBold /> {order.staffInfo?.firstName || "Assign Staff"}
                         </button>

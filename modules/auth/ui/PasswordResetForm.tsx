@@ -23,7 +23,7 @@ const PasswordResetForm = () => {
     const handleSubmit = async (values: PasswordResetFormType) => {
         setIsLoading(true);
         try {
-            const response = await restPassword(values.email, values.firstName);
+            const response = await restPassword(values.email, values.firstName, values.role);
             if (response.success) {
                 setIsSuccess(true);
                 toast.success(response.message);
@@ -61,7 +61,7 @@ const PasswordResetForm = () => {
                 {/* Action Button */}
                 <CommonButton
                     title="Go to Login"
-                    onPress={() => router.push('/login')}
+                    onPress={() => router.push('/')}
                     backgroundColor="bg-primary"
                     shadowColor="rgba(255, 255, 255, 0.1)"
                     className="w-full"
